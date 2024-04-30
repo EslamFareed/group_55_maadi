@@ -24,233 +24,118 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Color iconColor = Colors.grey;
+  var controller = TextEditingController();
 
-  bool isFav = false;
+  bool hidden = false;
+
+  var _key = GlobalKey<FormState>();
+
+  var checked = false;
+
+  String gender = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("Home"),
         backgroundColor: Colors.deepOrange,
         foregroundColor: Colors.white,
-        title: const Text("Test"),
       ),
-      drawer: Drawer(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Column(
-              children: [
-                SizedBox(height: 10),
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage("assets/images/image.jpg"),
-                ),
-                SizedBox(height: 20),
-                Card(
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.edit,
-                      size: 15,
-                    ),
-                    title: Text("Edit Profile"),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 15,
-                    ),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.shopping_cart,
-                      size: 15,
-                    ),
-                    title: Text("My Cart"),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 15,
-                    ),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.list,
-                      size: 15,
-                    ),
-                    title: Text("My Orders"),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 15,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              margin: EdgeInsets.only(bottom: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Icon(
-                    Icons.facebook,
-                    size: 30,
-                  ),
-                  Icon(
-                    Icons.wechat,
-                    size: 30,
-                  ),
-                  Icon(
-                    Icons.whatshot,
-                    size: 30,
-                  ),
-                ],
+      body: Container(
+        margin: const EdgeInsets.all(20),
+        child: Form(
+          key: _key,
+          child: Column(
+            children: [
+              // TextFormField(
+              //   validator: (value) {
+              //     if (value!.length < 6) {
+              //       return "not valid";
+              //     }
+              //   },
+              //   obscureText: hidden,
+              //   controller: controller,
+              //   keyboardType: TextInputType.emailAddress,
+              //   decoration: InputDecoration(
+              //     // hintText: "Please Enter your email",
+              //     labelText: "Please Enter your email",
+              //     // labelStyle: TextStyle(),
+              //     // hintStyle: TextStyle(),
+              //     prefixIcon: const Icon(Icons.email),
+              //     suffixIcon: IconButton(
+              //       onPressed: () {
+              //         setState(() {
+              //           hidden = !hidden;
+              //         });
+              //       },
+              //       icon:
+              //           Icon(hidden ? Icons.visibility_off : Icons.visibility),
+              //     ),
+              //     // suffixIcon: IconButton(
+              //     //   onPressed: () {
+              //     //     controller.text = "";
+              //     //   },
+              //     //   icon: const Icon(Icons.cancel_outlined),
+              //     // ),
+              //     border: OutlineInputBorder(
+              //       borderRadius: BorderRadius.circular(20),
+              //     ),
+              //     // border: InputBorder.none,
+              //   ),
+              //   // style: TextStyle(),
+              // ),
+              // MaterialButton(
+              //   onPressed: () {
+              //     _key.currentState!.validate();
+              //   },
+              //   color: Colors.deepOrange,
+              //   textColor: Colors.white,
+              //   child: const Text("Login"),
+              // ),
+              // Switch(
+              //   value: checked,
+              //   onChanged: (val) {
+              //     setState(() {
+              //       checked = !checked;
+              //     });
+              //   },
+              // ),
+              // SwitchListTile(
+              //   value: checked,
+              //   onChanged: (val) {
+              //     setState(() {
+              //       checked = !checked;
+              //     });
+              //   },
+              //   title: Text("CLick me"),
+              // )
+
+              RadioListTile(
+                title: const Text("Male"),
+                value: "Male",
+                groupValue: gender,
+                onChanged: (value) {
+                  setState(() {
+                    gender = "Male";
+                  });
+                },
               ),
-            ),
-          ],
-        ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Card(
-            child: ListTile(
-              onTap: () {},
-              leading: Icon(Icons.search),
-              title: Text("Search"),
-              subtitle: Text("Search For Products"),
-              trailing: Icon(
-                Icons.arrow_forward_ios,
-                size: 15,
+
+              RadioListTile(
+                title: const Text("Female"),
+                value: "Female",
+                groupValue: gender,
+                onChanged: (value) {
+                  setState(() {
+                    gender = "Female";
+                  });
+                },
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 }
-
-
-
-// class HomeScreen extends StatefulWidget {
-//   const HomeScreen({super.key});
-
-//   @override
-//   State<HomeScreen> createState() {
-//     print("createState -----------------------------------------------------");
-
-//     return _HomeScreenState();
-//   }
-// }
-
-// class _HomeScreenState extends State<HomeScreen> {
-//   String name = "Hello World";
-
-//   int counter = 0;
-
-//   @override
-//   void initState() {
-//     print("initState -----------------------------------------------------");
-//     super.initState();
-//   }
-
-//   @override
-//   void dispose() {
-//     print("dispose -----------------------------------------------------");
-
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     print("build -----------------------------------------------------");
-
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(name),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             IconButton(
-//               onPressed: () {
-//                 setState(() {
-//                   counter++;
-//                 });
-//               },
-//               icon: const Icon(Icons.add),
-//             ),
-//              Text(
-//               "$counter",
-//               style: const TextStyle(fontSize: 50),
-//             ),
-//             IconButton(
-//               onPressed: () {
-//                 setState(() {
-//                   counter--;
-//                 });
-//               },
-//               icon: const Icon(Icons.minimize),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-// // class HomeScreen extends StatelessWidget {
-// //   HomeScreen({super.key});
-// //   String name = "Hello World";
-// //   int counter = 0;
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return Scaffold(
-// //       appBar: AppBar(
-// //         title: Text(name),
-// //       ),
-// //       body: Center(
-// //         child: Column(
-// //           mainAxisAlignment: MainAxisAlignment.center,
-// //           children: [
-// //             IconButton(
-// //               onPressed: () {
-// //                 counter++;
-// //                 print(counter);
-// //               },
-// //               icon: Icon(Icons.add),
-// //             ),
-// //             Text(
-// //               "$counter",
-// //               style: TextStyle(fontSize: 50),
-// //             ),
-// //             // ElevatedButton(
-// //             //   onPressed: () {},
-// //             //   // onPressed: click,
-// //             //   child: Text("Click Me"),
-// //             //   style: ButtonStyle(),
-// //             // ),
-// //             // TextButton(
-// //             //   onPressed: () {},
-// //             //   child: Text("Click me"),
-// //             // ),
-// //             IconButton(
-// //               onPressed: () {
-// //                 counter--;
-// //                 print(counter);
-// //               },
-// //               icon: Icon(Icons.minimize),
-// //             ),
-// //           ],
-// //         ),
-// //       ),
-// //     );
-// //   }
-// //   void click() {
-// //     print("Clicked");
-// //   }
-// // }
-// }
