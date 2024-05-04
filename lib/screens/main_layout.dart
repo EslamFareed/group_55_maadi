@@ -15,7 +15,7 @@ class _MainLayoutState extends State<MainLayout> {
 
   List<Widget> screens = [
     Screen1(),
-    Screen2(),
+    // Screen2(),
     Screen3(),
   ];
 

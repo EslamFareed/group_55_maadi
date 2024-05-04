@@ -2,22 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:group_55_maadi/screens/screen3.dart';
 
 class Screen2 extends StatelessWidget {
-  const Screen2({super.key});
+  Screen2({super.key, required this.name});
+
+  String name;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Search"),
-        // leading: IconButton(
-        //   onPressed: () {
-        //     Navigator.pop(context);
-        //   },
-        //   icon: Icon(Icons.arrow_back_ios),
-        // ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context, "Hello from screen 2");
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
       ),
-      body: const Center(
-        child: Text("Search"),
+      body: Center(
+        child: Text(name),
       ),
       // body: Center(
       //   child: ElevatedButton(

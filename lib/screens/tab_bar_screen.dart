@@ -37,7 +37,7 @@ class TabBarScreen extends StatelessWidget {
         body: TabBarView(
           children: [
             Screen1(),
-            Screen2(),
+            // Screen2(),
             Screen3(),
           ],
         ),
